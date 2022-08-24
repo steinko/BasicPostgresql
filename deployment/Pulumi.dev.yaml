@@ -1,0 +1,2 @@
+config:
+  aws-native:region: eu-north-1

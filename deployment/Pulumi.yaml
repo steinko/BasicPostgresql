@@ -1,0 +1,3 @@
+name: deployment-postgresql
+runtime: nodejs
+description: deployent of postgres database on aws
