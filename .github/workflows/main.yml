@@ -21,7 +21,7 @@ jobs:
           pwd
           npm install
           npm i
-          export PULUMI_ACCESS_TOKEN secrets.PULUMI_ACCESS_TOKEN
+          export PULUMI_ACCESS_TOKEN ${{secrets.PULUMI_ACCESS_TOKEN }}
           echo $PULUMI_ACCESS_TOKEN
           pulumi login
           pulumi stack select dev
