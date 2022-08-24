@@ -1,8 +1,5 @@
 name: Pulumi
-on:
-  push:
-    branches:
-      - master
+on: push
 jobs:
   update:
     name: Update
