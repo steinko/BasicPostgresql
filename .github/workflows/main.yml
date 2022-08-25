@@ -30,8 +30,9 @@ jobs:
           apt-get update
           apt-get install --yes postgresql-client
       - name: Import Data
-        run:  psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/customers.sql
-        run:  psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/products.sql
-        run:  psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/purchases.sql
+        run:  |
+	  psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/customers.sql
+          psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/products.sql
+          psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/purchases.sql
 	env:
 	  PGPASSWORD: ROXYMUSIC11
