@@ -31,7 +31,9 @@ jobs:
         run: apt-get install --yes postgresql-client
       - name: Install PostgreSQL client
 	run: psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/customers.sql
+      - name: Install PostgreSQL client
         run: psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/products.sql
+      - name: Install PostgreSQL client
         run: psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/purchases.sql
 	env:
 	  PGPASSWORD: ROXYMUSIC11
