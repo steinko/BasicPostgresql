@@ -32,10 +32,10 @@ jobs:
       - name: Install PostgreSQL client
         run: psql --version 
       - name: create customer
-	run: psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/customers.sql
+	run: psql -h ${{ steps.pulumiStackOutput.outputs.endpoint }} -U steinko -d learning -f ../../data/customers.sql
       - name: create produkts
-        run: psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/products.sql
+        run: psql -h ${{ steps.pulumiStackOutput.outputs.endpoint }} -U steinko -d learning -f ../../data/products.sql
       - name: create purcasw
-        run: psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/purchases.sql
+        run: psql -h ${{ steps.pulumiStackOutput.outputs.endpoint }} -U steinko -d learning -f ../../data/purchases.sql
 	env:
 	  PGPASSWORD: ROXYMUSIC11
