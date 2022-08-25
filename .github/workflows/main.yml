@@ -27,7 +27,9 @@ jobs:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
       - name: Install PostgreSQL client
         run: apt-get update
+      - name: Install PostgreSQL client
         run: apt-get install --yes postgresql-client
+      - name: Install PostgreSQL client
 	run: psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/customers.sql
         run: psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/products.sql
         run: psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/purchases.sql
