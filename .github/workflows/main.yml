@@ -25,3 +25,13 @@ jobs:
           work-dir: deployment
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+      - name: Install PostgreSQL client
+        run: |
+          apt-get update
+          apt-get install --yes postgresql-client
+      - name: Import Data
+        run:  |
+	  `PGPASSWORD=ROXYMUSIC11 psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/customers.sql`
+          `PGPASSWORD=ROXYMUSIC11 psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/products.sql`
+          `PGPASSWORD=ROXYMUSIC11 psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/purchases.sql`
+	 
