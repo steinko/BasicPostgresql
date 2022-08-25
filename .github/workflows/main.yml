@@ -30,8 +30,7 @@ jobs:
           apt-get update
           apt-get install --yes postgresql-client
       - name: Import Data
-        run: |
-	  `PGPASSWORD=ROXYMUSIC11 psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/customers.sql`
-          `PGPASSWORD=ROXYMUSIC11 psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/products.sql`
-          `PGPASSWORD=ROXYMUSIC11 psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/purchases.sql`
+        run: `PGPASSWORD=ROXYMUSIC11 psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/customers.sql`
+        run: `PGPASSWORD=ROXYMUSIC11 psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/products.sql`
+        run: `PGPASSWORD=ROXYMUSIC11 psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/purchases.sql`
 	 
