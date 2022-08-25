@@ -29,6 +29,8 @@ jobs:
         run: apt-get update
       - name: Install PostgreSQL client
         run: apt-get install --yes postgresql-client
+      - name: Install PostgreSQL client
+        run: psql --version 
       - name: create customer
 	run: psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/customers.sql
       - name: create produkts
