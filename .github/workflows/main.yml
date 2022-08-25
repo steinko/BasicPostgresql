@@ -29,8 +29,6 @@ jobs:
         run: |
           apt-get update
           apt-get install --yes postgresql-client
-      - name: Import Data
-        run:  |
 	  psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/customers.sql
           psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/products.sql
           psql -h ${{ steps.pulumiStackOutput.outputs.endpoin }} -U steinko -d learning -f ../../data/purchases.sql
