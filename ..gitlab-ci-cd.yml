@@ -1,0 +1,41 @@
+stages:
+  - deploy
+  - import-data
+
+deploy:
+  stage: deploy
+  image: pulumi/pulumi-nodejs
+  script: 
+    - cd deployment
+    - npm i
+    - export PULUMI_ACCESS_TOKEN="$PULUMI_ACCESS_TOKEN"
+    - export AWS_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
+    - export AWS_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
+    - pulumi login
+    - pulumi stack select dev
+    - pulumi config set aws:region eu-north-1
+    - pulumi up -y
+    - echo HOST=$(pulumi stack output  endpoint)>> host.env
+  artifacts:
+    reports:
+      dotenv: host.env
+
+
+import-data:
+  stage: import-data
+  services:
+    - postgres
+  variables:
+    # Configure postgres service (https://hub.docker.com/_/postgres/)
+    POSTGRES_DB: learning
+    POSTGRES_USER: steinko
+    POSTGRES_PASSWORD: RoxyMusic11
+  image: postgres
+  script:
+    # official way to provide password to psql: http://www.postgresql.org/docs/9.3/static/libpq-envars.html
+    - export PGPASSWORD=$POSTGRES_PASSWORD
+    - psql -h "$HOST" -U "$POSTGRES_USER" -d "$POSTGRES_DB" -f /data/customers.sql
+  dependencies:
+    - depploy
+
+    

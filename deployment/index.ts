@@ -1,4 +1,11 @@
-import {dbInstance} from './DbInstance'
+import {learningDataBase} from './LearningDataBase'
+import {hrDataBase} from './HrDataBase'
+import {nortWindDataBase} from './NorthWindDataBase'
 
-dbInstance
-export const endpoint = dbInstance.endpoint
+learningDataBase
+hrDataBase
+nortWindDataBase
+
+export const learningEndpoint = learningDataBase.endpoint
+export const hrEndpoint = hrDataBase.endpoint
+export const nortWindEndpoint = nortWindDataBase.endpoint

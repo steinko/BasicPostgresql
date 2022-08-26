@@ -1,6 +1,6 @@
 import * as aws from "@pulumi/aws";
 
-export const dbInstance = new aws.rds.Instance("dbinstance", {
+export const learningDataBase = new aws.rds.Instance("learning-data-base", {
 	dbName: "learning",
     allocatedStorage: 10,
     engine: "postgres",
